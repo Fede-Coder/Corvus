@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="771.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.srfairyox.Corvus.Controller">
+   <children>
+      <Label fx:id="lblLastStatus" layoutX="14.0" layoutY="18.0" prefHeight="17.0" prefWidth="620.0" text="Last status:" />
+      <Button fx:id="btnOpenBackPage" layoutX="652.0" layoutY="14.0" mnemonicParsing="false" onAction="#btnOpenBackPageOnClick" prefHeight="25.0" prefWidth="105.0" text="Open backpage" />
+      <TabPane layoutY="51.0" prefHeight="470.0" prefWidth="771.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab fx:id="tabLogin" text="Login">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TitledPane fx:id="tpSessionIDLogin" animated="false" layoutX="14.0" layoutY="14.0" prefHeight="122.0" prefWidth="305.0" text="SessionID Login">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="129.0" prefWidth="303.0">
+                                 <children>
+                                    <Label layoutX="19.0" layoutY="18.0" text="Server:" />
+                                    <TextField fx:id="txtFServer" layoutX="64.0" layoutY="14.0" prefHeight="25.0" prefWidth="225.0" />
+                                    <Label layoutX="19.0" layoutY="55.0" text="SID:" />
+                                    <TextField fx:id="txtFSID" layoutX="64.0" layoutY="51.0" prefHeight="25.0" prefWidth="225.0" />
+                                 </children></AnchorPane>
+                          </content>
+                        </TitledPane>
+                        <Button fx:id="btnLogin" layoutX="67.0" layoutY="151.0" mnemonicParsing="false" onAction="#btnLoginOnClick" prefHeight="32.0" prefWidth="86.0" text="Login" />
+                        <Button fx:id="btnClearFields" layoutX="180.0" layoutY="151.0" mnemonicParsing="false" onAction="#btnClearFieldsOnClick" prefHeight="32.0" prefWidth="86.0" text="Clear" />
+                        <TitledPane fx:id="tpGeneralSettings" animated="false" layoutX="371.0" layoutY="14.0" prefHeight="252.0" prefWidth="386.0" text="General Settings">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="170.0" prefWidth="303.0">
+                                 <children>
+                                    <CheckBox fx:id="chkEnableLog" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="Enable log" />
+                                    <CheckBox fx:id="chkEnableDebugCMD" layoutX="14.0" layoutY="45.0" mnemonicParsing="false" text="Enable debug in console" />
+                                 </children></AnchorPane>
+                           </content>
+                        </TitledPane>
+                        <Label fx:id="lblErrorNotificationLogin" alignment="CENTER" layoutX="54.0" layoutY="197.0" prefHeight="17.0" prefWidth="225.0" textFill="RED" />
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+          <Tab fx:id="tabGalaxyGates" text="Galaxy Gates">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="431.0" prefWidth="680.0">
+                     <children>
+                        <TitledPane fx:id="tpAccount" animated="false" layoutX="330.0" layoutY="15.0" prefHeight="115.0" prefWidth="214.0" text="Account">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="87.0" prefWidth="231.0">
+                                 <children>
+                                    <Label fx:id="lblUridium" layoutX="14.0" layoutY="14.0" text="Uridium:" />
+                                    <Label fx:id="lblExtraEnergy" layoutX="14.0" layoutY="38.0" text="Extra Energy:" />
+                                    <Label fx:id="lblSpinCost" layoutX="15.0" layoutY="63.0" text="Spin Cost:" />
+                                 </children>
+                              </AnchorPane>
+                          </content>
+                        </TitledPane>
+                        <TitledPane fx:id="tpMaterializer" animated="false" layoutX="15.0" layoutY="15.0" prefHeight="115.0" prefWidth="300.0" text="Materializer">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="89.0" prefWidth="298.0">
+                                 <children>
+                                    <Label layoutX="14.0" layoutY="14.0" text="Gate:" />
+                                    <ComboBox fx:id="cBoxGates" layoutX="58.0" layoutY="10.0" prefHeight="25.0" prefWidth="220.0" />
+                                    <Button fx:id="btnStart" layoutX="58.0" layoutY="45.0" mnemonicParsing="false" onAction="#btnStartOnClick" prefHeight="37.0" prefWidth="98.0" text="Start" />
+                                    <Button fx:id="btnStop" layoutX="174.0" layoutY="45.0" mnemonicParsing="false" onAction="#btnStopOnClick" prefHeight="37.0" prefWidth="98.0" text="Stop" />
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </TitledPane>
+                        <TitledPane fx:id="tpStatistics" animated="false" layoutX="330.0" layoutY="140.0" prefHeight="288.0" prefWidth="214.0" text="Statistics">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="263.0" prefWidth="212.0">
+                                 <children>
+                                    <Label fx:id="lblSpinsUsed" layoutX="14.0" layoutY="14.0" text="Spins used:" />
+                                    <Label fx:id="lblReceivedX2" layoutX="15.0" layoutY="40.0" text="X2:" />
+                                    <Label fx:id="lblReceivedX3" layoutX="15.0" layoutY="60.0" text="X3:" />
+                                    <Label fx:id="lblReceivedX4" layoutX="15.0" layoutY="80.0" text="X4:" />
+                                    <Label fx:id="lblReceivedSAB" layoutX="15.0" layoutY="100.0" text="SAB:" />
+                                    <Label fx:id="lblReceivedPLT2021" layoutX="15.0" layoutY="120.0" text="PLT-2021:" />
+                                    <Label fx:id="lblReceivedACM" layoutX="15.0" layoutY="140.0" text="ACM:" />
+                                    <Label fx:id="lblReceivedNanoHull" layoutX="16.0" layoutY="158.0" text="Nano hull:" />
+                                    <Label fx:id="lblReceivedLogDisks" layoutX="16.0" layoutY="178.0" text="Log disks:" />
+                                    <Label fx:id="lblReceivedParts" layoutX="16.0" layoutY="198.0" text="Parts:" />
+                                    <Label fx:id="lblReceivedRepairCredits" layoutX="16.0" layoutY="218.0" text="Repair credits:" />
+                                    <Label fx:id="lblReceivedXenomit" layoutX="16.0" layoutY="238.0" text="Xenomit:" />
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </TitledPane>
+                        <TableView fx:id="tableViewGateInfo" layoutX="15.0" layoutY="140.0" prefHeight="288.0" prefWidth="300.0">
+                           <columns>
+                              <TableColumn fx:id="nameColumn" editable="false" prefWidth="53.0" resizable="false" sortable="false" text="Name" />
+                              <TableColumn fx:id="partsColumn" editable="false" prefWidth="57.0" resizable="false" sortable="false" text="Parts" />
+                              <TableColumn fx:id="readyColumn" editable="false" prefWidth="57.0" resizable="false" sortable="false" text="Ready" />
+                              <TableColumn fx:id="onMapColumn" editable="false" prefWidth="50.0" resizable="false" sortable="false" text="On Map" />
+                              <TableColumn fx:id="gatesBuiltColumn" editable="false" prefWidth="81.0" resizable="false" sortable="false" text="Gates Built" />
+                           </columns></TableView>
+                        <TitledPane fx:id="tpSettingsGates" animated="false" layoutX="555.0" layoutY="15.0" prefHeight="413.0" prefWidth="202.0" text="Settings">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <CheckBox fx:id="chkBoxPlaceGateOnMap" layoutX="14.0" layoutY="15.0" mnemonicParsing="false" text="Place gate on map" />
+                                    <CheckBox fx:id="chkBoxSpinOnlyEE" layoutX="14.0" layoutY="45.0" mnemonicParsing="false" text="Spin only EE" />
+                                    <Label layoutX="14.0" layoutY="75.0" text="Min Uridium:" />
+                                    <TextField fx:id="txtMinUridium" alignment="CENTER_RIGHT" layoutX="90.0" layoutY="73.0" prefHeight="17.0" prefWidth="105.0" text="100000" />
+                                    <Label layoutX="14.0" layoutY="105.0" text="Max spin cost:" />
+                                    <TextField fx:id="txtMaxSpinCost" alignment="CENTER_RIGHT" layoutX="96.0" layoutY="101.0" prefHeight="25.0" prefWidth="99.0" text="55" />
+                                 </children>
+                              </AnchorPane>
+                          </content>
+                        </TitledPane>
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+            <Tab fx:id="tabLog" text="Log">
+                <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextArea fx:id="txtAreaLog" editable="false" layoutX="14.0" layoutY="14.0" prefHeight="415.0" prefWidth="745.0" />
+                     </children></AnchorPane>
+                </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</Pane>
