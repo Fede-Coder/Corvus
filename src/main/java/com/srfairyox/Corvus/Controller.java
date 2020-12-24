@@ -20,15 +20,12 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import org.json.JSONObject;
 
 import java.awt.*;
-import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.text.NumberFormat;
 import java.time.OffsetDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.FutureTask;
 
 @SuppressWarnings("unchecked")
 public class Controller {
@@ -113,7 +110,7 @@ public class Controller {
 
     @FXML
     public void initialize() {
-        Log("Corvus v0.1 started - Made by 'Heaven. and SrFairyox");
+        Log("Corvus v0.2 started - Made by 'Heaven. and SrFairyox");
         tpSessionIDLogin.setCollapsible(false);
         tpGeneralSettings.setCollapsible(false);
 
@@ -264,15 +261,11 @@ public class Controller {
     }
 
     private synchronized void InitializeGuiAsync() {
-        Platform.runLater(() -> {
-            Log("Initializing gui...");
-            Log("Reading Galaxy Gates...");
-        });
+        Log("Initializing gui...");
+        Log("Reading Galaxy Gates...");
         account.ReadGatesAsync();
-        Platform.runLater(() -> {
-            UpdateGui();
-            Log("Initialization finished!");
-        });
+        UpdateGui();
+        Log("Initialization finished!");
     }
 
     private void UpdateGui() {
@@ -311,6 +304,11 @@ public class Controller {
             if(chkBoxPlaceGateOnMap.isSelected()) {
                 if((currentGateA.prepared && currentGateA.isReady()) || (currentGateB.prepared && currentGateB.isReady()) || (currentGateG.prepared && currentGateG.isReady())) {
                     Log("Stopping gate mode. Can not get more parts.");
+                    try {
+                        Thread.sleep(3000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                     return;
                 }
                 if(currentGateA.isReady() && !currentGateA.prepared){
@@ -329,6 +327,11 @@ public class Controller {
                 if (currentGateA.isReady() || currentGateB.isReady() || currentGateG.isReady())
                 {
                     Log("Stopping gate mode. Can not get more parts.");
+                    try {
+                        Thread.sleep(3000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                     return;
                 }
             }
@@ -336,6 +339,7 @@ public class Controller {
             if(chkBoxPlaceGateOnMap.isSelected()) {
                 if(currentGate.prepared && currentGate.isReady()) {
                     Log("Stopping gate mode. Can not get more parts.");
+                    Sleeping(3000);
                     return;
                 }
                 if(currentGate.isReady() && !currentGate.prepared) {
@@ -345,6 +349,7 @@ public class Controller {
             } else {
                 if(currentGate.isReady()) {
                     Log("Stopping gate mode. Can not get more parts.");
+                    Sleeping(3000);
                     return;
                 }
             }
@@ -352,18 +357,26 @@ public class Controller {
 
         if(account.gateData.EnergyCost.Text > account.gateData.Money && account.gateData.Samples <= 0) {
             Log("Stopping gate mode. No Uridium/EE left");
+            Sleeping(3000);
+            //Sleep 30 seconds
             return;
         }
         if(account.gateData.Money <= Integer.parseInt(txtMinUridium.getText())) {
             Log("Stopping gate mode. Minimum Uridium reached");
+            Sleeping(3000);
+            //Sleep 30 seconds
             return;
         }
         if(chkBoxSpinOnlyEE.isSelected() && account.gateData.Samples <= 0) {
             Log("Stopping gate mode. No EE left");
+            Sleeping(3000);
+            //Sleep 30 seconds
             return;
         }
         if(!(account.gateData.EnergyCost.Text <= Integer.parseInt(txtMaxSpinCost.getText()))) {
             Log("Stopping gate mode. Max Spin Cost");
+            Sleeping(3000);
+            //Sleep 30 seconds
             return;
         }
 
@@ -404,6 +417,14 @@ public class Controller {
             }
         }
         UpdateGui();
+    }
+
+    private void Sleeping(int ms) {
+        try {
+            Thread.sleep(ms);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     private synchronized void DoWork() {
@@ -489,6 +510,7 @@ public class Controller {
                 txtAreaLog.appendText("["+ DateTimeFormatter.ofPattern("HH:mm:ss").format(OffsetDateTime.now()) +"] " +text+"\n");
             }
         });
+
         if(chkEnableDebugCMD.isSelected()) {
             System.out.println(text);
         }
